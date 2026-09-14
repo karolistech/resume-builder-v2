@@ -1,0 +1,87 @@
+.resume {
+  overflow: hidden;
+}
+
+.resume__content {
+  width: 210mm;
+  height: 297mm;
+  display: grid;
+  background-color: #fff;
+  transform-origin: top left;
+}
+
+.resume--top .resume__content {
+  grid-template-rows: 15% 85%;
+  grid-template-areas:
+    "personal"
+    "education";
+}
+
+.resume--left .resume__content {
+  grid-template-columns: 40% 60%;
+  grid-template-areas: "personal education";
+}
+
+.resume--right .resume__content {
+  grid-template-columns: 60% 40%;
+  grid-template-areas: "education personal";
+}
+
+.resume__personal {
+  grid-area: personal;
+  padding: 2rem;
+  background-color: var(--color-primary);
+}
+
+.resume__name {
+  color: #fff;
+  text-align: center;
+}
+
+.resume__education {
+  grid-area: education;
+}
+
+.resume__contact {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--color-secondary);
+}
+
+.resume--left .resume__contact {
+  flex-direction: column;
+}
+
+.resume--right .resume__contact {
+  flex-direction: column;
+}
+
+.resume__main {
+  padding: 2rem;
+}
+
+.resume__education-title {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.resume--font-serif {
+  font-family: NotoSerif;
+}
+
+.resume--font-sans {
+  font-family: NotoSans;
+}
+
+.resume--font-mono {
+  font-family: NotoSansMono;
+}
+
+@media print {
+  .resume {
+    width: 210mm;
+    height: 297mm;
+  }
+}

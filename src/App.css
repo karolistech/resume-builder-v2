@@ -1,0 +1,77 @@
+.app {
+  padding: 1rem 1rem 4rem;
+}
+
+.panel {
+  display: none;
+}
+
+.app--content .panel--content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.app--customize .panel--customize {
+  display: block;
+}
+
+.app--preview .panel--resume {
+  display: block;
+}
+
+.panel--resume {
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .app {
+    padding-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+    grid-template-areas:
+      "nav  resume"
+      "form resume";
+  }
+
+  .panel--content,
+  .panel--customize {
+    grid-area: form;
+  }
+
+  .panel--resume {
+    grid-area: resume;
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .panel--content,
+  .panel--customize {
+    min-width: 350px;
+  }
+}
+
+@media print {
+  body {
+    background-color: #fff;
+  }
+
+  .nav,
+  .app--content .panel--content {
+    display: none;
+  }
+
+  .panel--resume {
+    display: block;
+  }
+}

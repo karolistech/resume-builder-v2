@@ -1,0 +1,48 @@
+@font-face {
+  font-family: NotoSans;
+  src: url("./assets/fonts/NotoSans.woff2") format("woff2");
+  font-weight: 100 900;
+}
+
+@font-face {
+  font-family: NotoSerif;
+  src: url("./assets/fonts/NotoSerif.woff2") format("woff2");
+  font-weight: 100 900;
+}
+
+@font-face {
+  font-family: NotoSansMono;
+  src: url("./assets/fonts/NotoSansMono.woff2") format("woff2");
+  font-weight: 100 900;
+}
+
+:root {
+  --color-primary: #0e374e;
+  --color-secondary: #eef1f2;
+}
+
+*, *::before, *::after {
+  /* border: 1px solid; */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  background-color: #f4f4f4;
+  font-family: NotoSans, system-ui;
+}
+
+input {
+  font-family: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}

@@ -1,0 +1,39 @@
+.nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 0.5rem;
+  display: flex;
+  background-color: #fff;
+}
+
+nav > button {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+.is-active {
+  background-color: red;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    grid-area: nav;
+    position: static;
+    left: auto;
+    right: auto;
+    bottom: auto;
+  }
+
+  .nav__preview {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    flex-direction: column;
+  }
+}
