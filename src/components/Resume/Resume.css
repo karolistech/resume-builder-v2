@@ -84,4 +84,8 @@
     width: 210mm;
     height: 297mm;
   }
+
+  .resume__content {
+    transform: none !important;
+  }
 }
