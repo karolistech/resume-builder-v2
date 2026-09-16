@@ -131,7 +131,7 @@ export default function Education({ education, updateResume }: EducationProps) {
 
           {(editor.mode === "create" || editor.mode === "edit") && activeEntry && (
             <form className="education__form">
-              <div className="education__fields">
+              {/* <div className="education__fields">
                 {educationFields.map(field => (
                   <div key={field.name} className="education__field">
                     <label htmlFor={field.name} className="education__label">
@@ -148,6 +148,59 @@ export default function Education({ education, updateResume }: EducationProps) {
                     />
                   </div>
                 ))}
+              </div> */}
+
+              <div className="education__fields">
+                {educationFields.slice(0, 2).map(field => (
+                  <div key={field.name} className="education__field">
+                    <label htmlFor={field.name} className="education__label">
+                      {field.label}:
+                    </label>
+
+                    <input
+                      type={field.type}
+                      id={field.name}
+                      name={field.name}
+                      className="education__input"
+                      value={activeEntry[field.name]}
+                      onChange={handleInput}
+                    />
+                  </div>
+                ))}
+
+                <div className="education__field education__field--date">
+                  {educationFields.slice(2, 4).map(field => (
+                    <div key={field.name} className="education__group">
+                      <label htmlFor={field.name} className="education__label">
+                        {field.label}:
+                      </label>
+
+                      <input
+                        type={field.type}
+                        id={field.name}
+                        name={field.name}
+                        className="education__input"
+                        value={activeEntry[field.name]}
+                        onChange={handleInput}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="education__field">
+                  <label htmlFor="location" className="education__label">
+                    Location:
+                  </label>
+
+                  <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    className="education__input"
+                    value={activeEntry.location}
+                    onChange={handleInput}
+                  />
+                </div>
               </div>
 
               <div className="education__actions">

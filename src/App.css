@@ -59,7 +59,7 @@
 
   .panel--content,
   .panel--customize {
-    min-width: 350px;
+    max-width: 350px;
   }
 }
 
