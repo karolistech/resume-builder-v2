@@ -10,7 +10,7 @@ export default function Toolbar({ clearResume, loadExample }: ToolbarProps) {
   return (
     <div className="toolbar">
       <button className="toolbar__btn toolbar__btn--clear" onClick={clearResume}>
-        <svg className="toolbar__trash-icon">
+        <svg className="toolbar__icon">
           <use href={`${icons}#trash-can`} />
         </svg>
 
@@ -18,7 +18,7 @@ export default function Toolbar({ clearResume, loadExample }: ToolbarProps) {
       </button>
 
       <button className="toolbar__btn" onClick={loadExample}>
-        <svg className="toolbar__file-icon">
+        <svg className="toolbar__icon">
           <use href={`${icons}#file`} />
         </svg>
 
@@ -26,7 +26,7 @@ export default function Toolbar({ clearResume, loadExample }: ToolbarProps) {
       </button>
 
       <button className="toolbar__btn" onClick={() => window.print()}>
-        <svg className="toolbar__file-export-icon">
+        <svg className="toolbar__icon">
           <use href={`${icons}#file-export`} />
         </svg>
 

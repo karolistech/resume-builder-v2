@@ -17,13 +17,13 @@ type Editor =
 const educationFields = [
   { name: "school", label: "School", type: "text" },
   { name: "degree", label: "Degree", type: "text" },
-  { name: "startDate", label: "Start Date", type: "month" },
-  { name: "endDate", label: "End Date", type: "month" },
+  { name: "startDate", label: "Start Date", type: "text" },
+  { name: "endDate", label: "End Date", type: "text" },
   { name: "location", label: "Location", type: "text" }
 ] as const;
 
 export default function Education({ education, updateResume }: EducationProps) {
-  const [sectionOpen, setSectionOpen] = useState(true);
+  const [sectionOpen, setSectionOpen] = useState(false);
   const [editor, setEditor] = useState<Editor>({ mode: null, activeId: null, snapshot: null });
 
   const activeEntry = education.find(entry => entry.id === editor.activeId);
@@ -131,25 +131,6 @@ export default function Education({ education, updateResume }: EducationProps) {
 
           {(editor.mode === "create" || editor.mode === "edit") && activeEntry && (
             <form className="education__form">
-              {/* <div className="education__fields">
-                {educationFields.map(field => (
-                  <div key={field.name} className="education__field">
-                    <label htmlFor={field.name} className="education__label">
-                      {field.label}:
-                    </label>
-
-                    <input
-                      type={field.type}
-                      id={field.name}
-                      name={field.name}
-                      className="education__input"
-                      value={activeEntry[field.name]}
-                      onChange={handleInput}
-                    />
-                  </div>
-                ))}
-              </div> */}
-
               <div className="education__fields">
                 {educationFields.slice(0, 2).map(field => (
                   <div key={field.name} className="education__field">

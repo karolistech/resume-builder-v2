@@ -23,17 +23,7 @@
   color: #b91c1c;
 }
 
-.toolbar__trash-icon {
-  width: 16px;
-  height: 16px;
-}
-
-.toolbar__file-icon {
-  width: 16px;
-  height: 16px;
-}
-
-.toolbar__file-export-icon {
+.toolbar__icon {
   width: 16px;
   height: 16px;
 }
