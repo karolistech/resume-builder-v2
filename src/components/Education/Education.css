@@ -51,6 +51,7 @@
   justify-content: space-between;
   padding: 1rem;
   border-top: 5px solid #f4f4f4;
+  cursor: pointer;
 }
 
 .education__entry:last-of-type {
@@ -80,7 +81,6 @@
   background: none;
   border: 4px solid #eee;
   border-radius: 1.25rem;
-  /* font-size: 1rem; */
   font-weight: 600;
 }
 
@@ -111,5 +111,32 @@
   padding: 0.5rem;
   background-color: #f4f4f4;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
+}
+
+.education__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.education__btn {
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.education__btn--cancel {
+  margin-left: auto;
+}
+
+.education__btn--submit {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .education__btn:hover {
+    filter: brightness(90%);
+  }
 }

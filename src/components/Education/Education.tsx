@@ -1,4 +1,4 @@
-import { type ChangeEvent, useState } from "react";
+import { type ChangeEvent, useEffect, useState } from "react";
 
 import type { Education, Resume } from "@/types/resume";
 
@@ -23,10 +23,15 @@ const educationFields = [
 ] as const;
 
 export default function Education({ education, updateResume }: EducationProps) {
-  const [sectionOpen, setSectionOpen] = useState(false);
+  const [sectionOpen, setSectionOpen] = useState(true);
   const [editor, setEditor] = useState<Editor>({ mode: null, activeId: null, snapshot: null });
 
   const activeEntry = education.find(entry => entry.id === editor.activeId);
+
+  useEffect(() => {
+    if (editor.mode === null) return;
+    if (activeEntry === undefined) closeEditor();
+  }, [education]);
 
   function toggleSection() {
     setSectionOpen(open => !open);
@@ -147,16 +152,16 @@ export default function Education({ education, updateResume }: EducationProps) {
 
               <div className="education__actions">
                 {editor.mode === "edit" && (
-                  <button type="button" className="education__button" onClick={deleteEntry}>
+                  <button type="button" className="education__btn education__btn--edit" onClick={deleteEntry}>
                     Delete
                   </button>
                 )}
 
-                <button type="button" className="education__button" onClick={cancelEntry}>
+                <button type="button" className="education__btn education__btn--cancel" onClick={cancelEntry}>
                   Cancel
                 </button>
 
-                <button type="button" className="education__button" onClick={closeEditor}>
+                <button type="button" className="education__btn education__btn--submit" onClick={closeEditor}>
                   {editor.mode === "create" ? "Add" : "Save"}
                 </button>
               </div>

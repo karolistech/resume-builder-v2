@@ -1,4 +1,4 @@
-import type { Customization } from "@/types/customization";
+import type { Customization, Font, Layout } from "@/types/customization";
 
 import "./Customize.css";
 
@@ -7,8 +7,11 @@ type CustomizeProps = {
   updateCustomization: (updates: Partial<Customization>) => void;
 };
 
+const layouts: Layout[] = ["top", "left", "right"];
+const fonts: Font[] = ["serif", "sans", "mono"];
+
 export default function Customize({ customization, updateCustomization }: CustomizeProps) {
-  const { primaryColor, secondaryColor } = customization;
+  const { layout, primaryColor, secondaryColor, font } = customization;
 
   return (
     <>
@@ -16,17 +19,15 @@ export default function Customize({ customization, updateCustomization }: Custom
         <h2 className="layout__title">Layout</h2>
 
         <div className="layout__options">
-          <button className="layout__btn layout__btn--top" onClick={() => updateCustomization({ layout: "top" })}>
-            Top
-          </button>
-
-          <button className="layout__btn layout__btn--left" onClick={() => updateCustomization({ layout: "left" })}>
-            Left
-          </button>
-
-          <button className="layout__btn layout__btn--right" onClick={() => updateCustomization({ layout: "right"})}>
-            Right
-          </button>
+          {layouts.map(l => (
+            <button
+              key={l}
+              className={getLayoutButtonClass(l, layout)}
+              onClick={() => updateCustomization({ layout: l})}
+            >
+              {l}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -36,6 +37,7 @@ export default function Customize({ customization, updateCustomization }: Custom
         <div className="color__options">
           <div className="color__options--primary">
             <span>Primary Color</span>
+
             <input
               type="color"
               className="color__input"
@@ -46,6 +48,7 @@ export default function Customize({ customization, updateCustomization }: Custom
 
           <div className="color__options--secondary">
             <span>Secondary Color</span>
+
             <input
               type="color"
               className="color__input"
@@ -60,19 +63,33 @@ export default function Customize({ customization, updateCustomization }: Custom
         <h2 className="font__title">Font</h2>
 
         <div className="font__options">
-          <button onClick={() => updateCustomization({ font: "serif" })}>
-            Serif
-          </button>
-
-          <button onClick={() => updateCustomization({ font: "sans" })}>
-            Sans
-          </button>
-
-          <button onClick={() => updateCustomization({ font: "mono" })}>
-            Mono
-          </button>
+          {fonts.map(f => (
+            <button
+              key={f}
+              className={getFontButtonClass(f, font)}
+              onClick={() => updateCustomization({ font: f })}
+            >
+              {f}
+            </button>
+          ))}
         </div>
       </div>
     </>
   );
+}
+
+function getLayoutButtonClass(layout: Layout, selectedLayout: Layout): string {
+  const base = "layout__btn";
+  const position = `layout__btn--${layout}`;
+  const selected = layout === selectedLayout && "layout__btn--selected";
+
+  return [base, position, selected].filter(Boolean).join(" ");
+}
+
+function getFontButtonClass(font: Font, selectedFont: Font): string {
+  const base = "font__btn";
+  const variant = `font__btn--${font}`;
+  const selected = font === selectedFont && "font__btn--selected";
+
+  return [base, variant, selected].filter(Boolean).join(" ");
 }

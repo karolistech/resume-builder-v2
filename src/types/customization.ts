@@ -1,6 +1,10 @@
+export type Layout = "top" | "left" | "right";
+
+export type Font = "sans" | "serif" | "mono";
+
 export type Customization = {
-  layout: "top" | "left" | "right";
-  font: "sans" | "serif" | "mono";
+  layout: Layout;
+  font: Font;
   primaryColor: string;
   secondaryColor: string;
 };

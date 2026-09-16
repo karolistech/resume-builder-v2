@@ -82,7 +82,7 @@
 @media print {
   .resume {
     width: 210mm;
-    height: 297mm;
+    height: 297mm !important;
   }
 
   .resume__content {

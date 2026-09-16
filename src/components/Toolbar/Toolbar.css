@@ -1,0 +1,49 @@
+.toolbar {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.toolbar__btn {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #f4f4f4;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.toolbar__btn--clear {
+  color: #b91c1c;
+}
+
+.toolbar__trash-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.toolbar__file-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.toolbar__file-export-icon {
+  width: 16px;
+  height: 16px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .toolbar__btn:hover {
+    filter: brightness(90%);
+  }
+
+  .toolbar__btn:active {
+    filter: brightness(85%);
+  }
+}

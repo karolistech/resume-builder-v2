@@ -18,7 +18,7 @@ const personalFields = [
 ] as const;
 
 export default function Personal({ personal, updateResume }: PersonalProps) {
-  const [sectionOpen, setSectionOpen] = useState(true);
+  const [sectionOpen, setSectionOpen] = useState(false);
 
   function toggleSection() {
     setSectionOpen(open => !open);
