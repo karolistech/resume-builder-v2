@@ -4,6 +4,7 @@ import type { Resume } from "@/types/resume";
 import type { Customization } from "@/types/customization";
 
 import "./Resume.css";
+import icons from "@/assets/icons/icons.svg";
 
 type ResumeProps = {
   resume: Resume;
@@ -44,29 +45,73 @@ export default function Resume({ resume, customization }: ResumeProps) {
   return (
     <div ref={containerRef} className={`resume resume--${layout} resume--font-${font}`}>
       <div ref={resumeRef} className="resume__content">
+
         <div className="resume__personal">
           <h1 className="resume__name">{personal.name}</h1>
 
           <div className="resume__contact">
-            <span className="resume__email">{personal.email}</span>
-            <span className="resume__phone">{personal.phone}</span>
-            <span className="resume__location">{personal.location}</span>
+            {personal.email && (
+              <div className="resume__contact-group">
+                <svg className="resume__icon">
+                  <use href={`${icons}#envelope`} />
+                </svg>
+
+                <span className="resume__email">
+                  {personal.email}
+                </span>
+              </div>
+            )}
+
+            {personal.phone && (
+              <div className="resume__contact-group">
+
+                <svg className="resume__icon">
+                  <use href={`${icons}#phone`} />
+                </svg>
+
+                <span className="resume__phone">
+                  {personal.phone}
+                </span>
+              </div>
+            )}
+
+            {personal.location && (
+              <div className="resume__contact-group">
+                <svg className="resume__icon">
+                  <use href={`${icons}#location`} />
+                </svg>
+
+                <span className="resume__location">
+                  {personal.location}
+                </span>
+              </div>
+            )}
           </div>
         </div>
 
         <div className="resume__main">
-          <div className="resume__education">
-            <h2 className="resume__education-title">Education</h2>
+          {education.some(entry => entry.visible) && (
+            <div className="resume__education">
+              <h2 className="resume__education-title">Education</h2>
 
-            {education.filter(entry => entry.visible).map(entry => (
-              <div key={entry.id} className="resume__education-entry">
-                <span>{entry.school}</span>
-                <span>{entry.degree}</span>
-                <p>{entry.startDate} - {entry.endDate}</p>
-                <p>{entry.location}</p>
-              </div>
-            ))}
-          </div>
+              {education.filter(entry => entry.visible).map(entry => (
+                <div key={entry.id} className="resume__education-entry">
+                  <div className="resume__education-info-group">
+                    <p className="resume__education-dates">
+                      {entry.startDate} – {entry.endDate}
+                    </p>
+
+                    <p>{entry.location}</p>
+                  </div>
+
+                  <div className="resume__education-info-group">
+                    <p className="resume__school">{entry.school}</p>
+                    <p>{entry.degree}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

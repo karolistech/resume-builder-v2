@@ -10,13 +10,6 @@ type PersonalProps = {
   updateResume: (updates: Partial<Resume>) => void;
 };
 
-const personalFields = [
-  { name: "name", label: "Full Name", type: "text" },
-  { name: "email", label: "Email", type: "email" },
-  { name: "phone", label: "Phone Number", type: "tel" },
-  { name: "location", label: "Location", type: "text" }
-] as const;
-
 export default function Personal({ personal, updateResume }: PersonalProps) {
   const [sectionOpen, setSectionOpen] = useState(true);
 
@@ -31,14 +24,14 @@ export default function Personal({ personal, updateResume }: PersonalProps) {
   }
 
   return (
-    <div className="personal-section">
-      <button className="personal-section__toggle-button" onClick={toggleSection}>
-        <div className="personal-section__toggle-left">
-          <svg className="personal-section__person-icon">
+    <div className="personal">
+      <button className="personal__toggle-button" onClick={toggleSection}>
+        <div className="personal__toggle-left">
+          <svg className="personal__person-icon">
             <use href={`${icons}#person`} />
           </svg>
 
-          <span className="personal-section__title">
+          <span className="personal__title">
             Personal Details
           </span>
         </div>
@@ -48,24 +41,51 @@ export default function Personal({ personal, updateResume }: PersonalProps) {
         </svg>
       </button>
 
-      {sectionOpen === true && (
-        <form className="personal-section__form">
-          {personalFields.map(field => (
-            <div key={field.name} className="personal-section__field">
-              <label htmlFor={field.name} className="personal-section__label">
-                {field.label}:
-              </label>
+      {sectionOpen && (
+        <form className="personal__form">
+          <div className="personal__field">
+            <label htmlFor="personal-name" className="personal__label">
+              Name:
+            </label>
 
-              <input
-                type={field.type}
-                id={field.name}
-                name={field.name}
-                className="personal-section__input"
-                value={personal[field.name]}
-                onChange={handleInput}
-              />
-            </div>
-          ))}
+            <input
+              type="text" id="personal-name" name="name" className="personal__input"
+              value={personal["name"]} onChange={handleInput}
+            />
+          </div>
+
+          <div className="personal__field">
+            <label htmlFor="personal-email" className="personal__label">
+              Email:
+            </label>
+
+            <input
+              type="email" id="personal-email" name="email" className="personal__input"
+              value={personal["email"]} onChange={handleInput}
+            />
+          </div>
+
+          <div className="personal__field">
+            <label htmlFor="personal-phone" className="personal__label">
+              Phone:
+            </label>
+
+            <input
+              type="tel" id="personal-phone" name="phone" className="personal__input"
+              value={personal["phone"]} onChange={handleInput}
+            />
+          </div>
+
+          <div className="personal__field">
+            <label htmlFor="personal-location" className="personal__label">
+              Location:
+            </label>
+
+            <input
+              type="text" id="personal-location" name="location" className="personal__input"
+              value={personal["location"]} onChange={handleInput}
+            />
+          </div>
         </form>
       )}
     </div>
@@ -73,8 +93,8 @@ export default function Personal({ personal, updateResume }: PersonalProps) {
 }
 
 function getChevronClassName(sectionOpen: boolean): string {
-  const base = "personal-section__chevron-icon";
-  const open = sectionOpen && "personal-section__chevron-icon--open";
+  const base = "personal__chevron-icon";
+  const open = sectionOpen && "personal__chevron-icon--open";
 
   return [base, open].filter(Boolean).join(" ");
 }

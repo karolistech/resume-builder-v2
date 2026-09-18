@@ -17,8 +17,11 @@
 }
 
 :root {
-  --color-primary: #0e374e;
-  --color-secondary: #eef1f2;
+  --color-title-background: #0e374e;
+  --color-title-text: #eef1f2;
+  --color-heading-background: #eef1f2;
+  --color-heading-text: #0e374e;
+  --color-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 *, *::before, *::after {

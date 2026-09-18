@@ -1,70 +1,6 @@
 .resume {
+  box-shadow: var(--color-shadow);
   overflow: hidden;
-}
-
-.resume__content {
-  width: 210mm;
-  height: 297mm;
-  display: grid;
-  background-color: #fff;
-  transform-origin: top left;
-}
-
-.resume--top .resume__content {
-  grid-template-rows: 15% 85%;
-  grid-template-areas:
-    "personal"
-    "education";
-}
-
-.resume--left .resume__content {
-  grid-template-columns: 40% 60%;
-  grid-template-areas: "personal education";
-}
-
-.resume--right .resume__content {
-  grid-template-columns: 60% 40%;
-  grid-template-areas: "education personal";
-}
-
-.resume__personal {
-  grid-area: personal;
-  padding: 2rem;
-  background-color: var(--color-primary);
-}
-
-.resume__name {
-  color: #fff;
-  text-align: center;
-}
-
-.resume__education {
-  grid-area: education;
-}
-
-.resume__contact {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  color: var(--color-secondary);
-}
-
-.resume--left .resume__contact {
-  flex-direction: column;
-}
-
-.resume--right .resume__contact {
-  flex-direction: column;
-}
-
-.resume__main {
-  padding: 2rem;
-}
-
-.resume__education-title {
-  background-color: var(--color-secondary);
-  color: var(--color-primary);
-  text-align: center;
 }
 
 .resume--font-serif {
@@ -77,6 +13,130 @@
 
 .resume--font-mono {
   font-family: NotoSansMono;
+}
+
+.resume__content {
+  width: 210mm;
+  height: 297mm;
+  display: flex;
+  background-color: #fff;
+  transform-origin: top left;
+  overflow-wrap: anywhere;
+}
+
+.resume--top .resume__content {
+  flex-direction: column;
+}
+
+.resume--left .resume__content {
+  flex-direction: row;
+}
+
+.resume--right .resume__content {
+  flex-direction: row-reverse;
+}
+
+.resume__personal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--color-title-background);
+  color: var(--color-title-text);
+}
+
+.resume--top .resume__personal {
+  padding: 2rem;
+}
+
+.resume--left .resume__personal {
+  width: 35%;
+  padding: 1.5rem 1rem;
+}
+
+.resume--right .resume__personal {
+  width: 35%;
+  padding: 1.5rem 1rem;
+}
+
+.resume__name {
+  text-align: center;
+}
+
+.resume__contact {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.resume--left .resume__contact {
+  flex-direction: column;
+}
+
+.resume--right .resume__contact {
+  flex-direction: column;
+}
+
+.resume__contact-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.resume__icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: var(--color-title-text);
+}
+
+.resume__main {
+  flex: 1;
+  padding: 2rem;
+}
+
+.resume--left .resume__main {
+  padding: 1.5rem 1rem;
+}
+
+.resume--right .resume__main {
+  padding: 1.5rem 1rem;
+}
+
+.resume__education {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.resume__education-title {
+  padding-block: 0.25rem;
+  background-color: var(--color-heading-background);
+  color: var(--color-heading-text);
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.resume__education-entry {
+  display: flex;
+  gap: 1rem;
+}
+
+.resume__education-info-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.resume__education-dates {
+  min-width: 60mm;
+  overflow-wrap: anywhere;
+}
+
+.resume__school {
+  font-weight: 700;
 }
 
 @media print {

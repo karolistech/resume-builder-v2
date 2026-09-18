@@ -3,6 +3,7 @@
   flex-direction: column;
   background-color: #fff;
   border-radius: 8px;
+  box-shadow: var(--color-shadow);
 }
 
 .education__cap-icon {
@@ -102,19 +103,16 @@
 .education__field {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
-.education__field--date {
-  flex-direction: row;
-  gap: 0.5rem;
-}
-
-.education__group {
-  flex: 1;
+.education__field-group {
   display: flex;
-  flex-direction: column;
   gap: 0.5rem;
+}
+
+.education__field-group .education__field {
+  flex: 1;
 }
 
 .education__label {
@@ -149,8 +147,8 @@
 }
 
 .education__btn--submit {
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
+  background-color: var(--color-title-background);
+  color: var(--color-title-text);
 }
 
 @media (hover: hover) and (pointer: fine) {

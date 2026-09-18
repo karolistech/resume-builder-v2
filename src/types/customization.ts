@@ -5,6 +5,8 @@ export type Font = "sans" | "serif" | "mono";
 export type Customization = {
   layout: Layout;
   font: Font;
-  primaryColor: string;
-  secondaryColor: string;
+  titleBackground: string;
+  titleText: string;
+  headingBackground: string;
+  headingText: string;
 };

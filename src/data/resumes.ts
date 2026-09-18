@@ -38,7 +38,7 @@ export const exampleResume: Resume = {
       startDate: "2018-09",
       endDate: "2022-05",
       location: "New York, NY",
-      visible: false
+      visible: true
     }
   ],
 

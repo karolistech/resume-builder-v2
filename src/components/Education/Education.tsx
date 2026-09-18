@@ -14,14 +14,6 @@ type Editor =
   | { mode: null; activeId: null; snapshot: null }
   | { mode: "create" | "edit"; activeId: string; snapshot: Education[] };
 
-const educationFields = [
-  { name: "school", label: "School", type: "text" },
-  { name: "degree", label: "Degree", type: "text" },
-  { name: "startDate", label: "Start Date", type: "text" },
-  { name: "endDate", label: "End Date", type: "text" },
-  { name: "location", label: "Location", type: "text" }
-] as const;
-
 export default function Education({ education, updateResume }: EducationProps) {
   const [sectionOpen, setSectionOpen] = useState(false);
   const [editor, setEditor] = useState<Editor>({ mode: null, activeId: null, snapshot: null });
@@ -73,13 +65,21 @@ export default function Education({ education, updateResume }: EducationProps) {
   }
 
   function toggleEntry(id: string) {
-    updateResume({ education: education.map(entry => entry.id === id ? { ...entry, visible: !entry.visible } : entry) });
+    const updated = education.map(entry =>
+      entry.id === id ? { ...entry, visible: !entry.visible } : entry
+    );
+
+    updateResume({ education: updated });
   }
 
   function handleInput(e: ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
 
-    updateResume({ education: education.map(entry => entry.id === editor.activeId ? { ...entry, [name]: value } : entry) });
+    const updated = education.map(entry =>
+      entry.id === editor.activeId ? { ...entry, [name]: value } : entry
+    );
+
+    updateResume({ education: updated });
   }
 
   return (
@@ -100,108 +100,110 @@ export default function Education({ education, updateResume }: EducationProps) {
         </svg>
       </button>
 
-      {sectionOpen === true && (
+      {sectionOpen && editor.mode === null && (
         <>
-          {editor.mode === null && (
-            <>
-              <ul className="education__entries">
-                {education.map(entry => (
-                  <li key={entry.id} className="education__entry" onClick={() => editEntry(entry.id)}>
-                    <span className="education__school">
-                      {entry.school}
-                    </span>
+          <ul className="education__entries">
+            {education.map(entry => (
+              <li key={entry.id} className="education__entry" onClick={() => editEntry(entry.id)}>
+                <span className="education__school">
+                  {entry.school}
+                </span>
 
-                    <button
-                      className="education__visibility-button"
-                      onClick={e => { e.stopPropagation(); toggleEntry(entry.id); }}
-                    >
-                      <svg className="education__visibility-icon">
-                        <use href={`${icons}#${entry.visible ? "eye" : "eye-slash"}`} />
-                      </svg>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-
-              <button className="education__add-button" onClick={createEntry}>
-                + Education
-              </button>
-            </>
-          )}
-
-          {(editor.mode === "create" || editor.mode === "edit") && activeEntry && (
-            <form className="education__form">
-              <div className="education__fields">
-                {educationFields.slice(0, 2).map(field => (
-                  <div key={field.name} className="education__field">
-                    <label htmlFor={field.name} className="education__label">
-                      {field.label}:
-                    </label>
-
-                    <input
-                      type={field.type}
-                      id={field.name}
-                      name={field.name}
-                      className="education__input"
-                      value={activeEntry[field.name]}
-                      onChange={handleInput}
-                    />
-                  </div>
-                ))}
-
-                <div className="education__field education__field--date">
-                  {educationFields.slice(2, 4).map(field => (
-                    <div key={field.name} className="education__group">
-                      <label htmlFor={field.name} className="education__label">
-                        {field.label}:
-                      </label>
-
-                      <input
-                        type={field.type}
-                        id={field.name}
-                        name={field.name}
-                        className="education__input"
-                        value={activeEntry[field.name]}
-                        onChange={handleInput}
-                      />
-                    </div>
-                  ))}
-                </div>
-
-                <div className="education__field">
-                  <label htmlFor="location" className="education__label">
-                    Location:
-                  </label>
-
-                  <input
-                    type="text"
-                    id="location"
-                    name="location"
-                    className="education__input"
-                    value={activeEntry.location}
-                    onChange={handleInput}
-                  />
-                </div>
-              </div>
-
-              <div className="education__actions">
-                {editor.mode === "edit" && (
-                  <button type="button" className="education__btn education__btn--edit" onClick={deleteEntry}>
-                    Delete
-                  </button>
-                )}
-
-                <button type="button" className="education__btn education__btn--cancel" onClick={cancelEntry}>
-                  Cancel
+                <button
+                  className="education__visibility-button"
+                  onClick={e => { e.stopPropagation(); toggleEntry(entry.id); }}
+                >
+                  <svg className="education__visibility-icon">
+                    <use href={`${icons}#${entry.visible ? "eye" : "eye-slash"}`} />
+                  </svg>
                 </button>
+              </li>
+            ))}
+          </ul>
 
-                <button type="button" className="education__btn education__btn--submit" onClick={closeEditor}>
-                  {editor.mode === "create" ? "Add" : "Save"}
-                </button>
-              </div>
-            </form>
-          )}
+          <button className="education__add-button" onClick={createEntry}>
+            + Education
+          </button>
         </>
+      )}
+
+      {sectionOpen && editor.mode !== null && activeEntry !== undefined && (
+        <form className="education__form" onSubmit={closeEditor}>
+          <div className="education__fields">
+            <div className="education__field">
+              <label htmlFor="education-school" className="education__label">
+                School:
+              </label>
+
+              <input
+                type="text" id="education-school" name="school" className="education__input"
+                value={activeEntry.school} onChange={handleInput}
+              />
+            </div>
+
+            <div className="education__field">
+              <label htmlFor="education-degree" className="education__label">
+                Degree:
+              </label>
+
+              <input
+                type="text" id="education-degree" name="degree" className="education__input"
+                value={activeEntry.degree} onChange={handleInput}
+              />
+            </div>
+
+            <div className="education__field-group">
+              <div className="education__field">
+                <label htmlFor="education-start-date" className="education__label">
+                  Start Date:
+                </label>
+
+                <input
+                  type="text" id="education-start-date" name="startDate" className="education__input"
+                  value={activeEntry.startDate} onChange={handleInput}
+                />
+              </div>
+
+              <div className="education__field">
+                <label htmlFor="education-end-date" className="education__label">
+                  End Date:
+                </label>
+
+                <input
+                  type="text" id="education-end-date" name="endDate" className="education__input"
+                  value={activeEntry.endDate} onChange={handleInput}
+                />
+              </div>
+            </div>
+
+            <div className="education__field">
+              <label htmlFor="education-location" className="education__label">
+                Location:
+              </label>
+
+              <input
+                type="text" id="education-location" name="location" className="education__input"
+                value={activeEntry.location} onChange={handleInput}
+              />
+            </div>
+          </div>
+
+          <div className="education__actions">
+            {editor.mode === "edit" && (
+              <button type="button" className="education__btn education__btn--edit" onClick={deleteEntry}>
+                Delete
+              </button>
+            )}
+
+            <button type="button" className="education__btn education__btn--cancel" onClick={cancelEntry}>
+              Cancel
+            </button>
+
+            <button type="submit" className="education__btn education__btn--submit">
+              {editor.mode === "create" ? "Add" : "Save"}
+            </button>
+          </div>
+        </form>
       )}
     </div>
   );
@@ -213,3 +215,4 @@ function getChevronClassName(sectionOpen: boolean): string {
 
   return [base, open].filter(Boolean).join(" ");
 }
+

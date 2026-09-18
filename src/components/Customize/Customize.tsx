@@ -11,7 +11,7 @@ const layouts: Layout[] = ["top", "left", "right"];
 const fonts: Font[] = ["serif", "sans", "mono"];
 
 export default function Customize({ customization, updateCustomization }: CustomizeProps) {
-  const { layout, primaryColor, secondaryColor, font } = customization;
+  const { layout, titleBackground, titleText, headingBackground, headingText, font } = customization;
 
   return (
     <>
@@ -36,24 +36,46 @@ export default function Customize({ customization, updateCustomization }: Custom
 
         <div className="color__options">
           <div className="color__options--primary">
-            <span>Primary Color</span>
+            <span>Title Background</span>
 
             <input
               type="color"
               className="color__input"
-              value={primaryColor}
-              onChange={e => updateCustomization({ primaryColor: e.target.value })}
+              value={titleBackground}
+              onChange={e => updateCustomization({ titleBackground: e.target.value })}
             />
           </div>
 
           <div className="color__options--secondary">
-            <span>Secondary Color</span>
+            <span>Title Text</span>
 
             <input
               type="color"
               className="color__input"
-              value={secondaryColor}
-              onChange={e => updateCustomization({ secondaryColor: e.target.value })}
+              value={titleText}
+              onChange={e => updateCustomization({ titleText: e.target.value })}
+            />
+          </div>
+
+          <div className="color__options--secondary">
+            <span>Heading Background</span>
+
+            <input
+              type="color"
+              className="color__input"
+              value={headingBackground}
+              onChange={e => updateCustomization({ headingBackground: e.target.value })}
+            />
+          </div>
+
+          <div className="color__options--secondary">
+            <span>Heading Text</span>
+
+            <input
+              type="color"
+              className="color__input"
+              value={headingText}
+              onChange={e => updateCustomization({ headingText: e.target.value })}
             />
           </div>
         </div>
