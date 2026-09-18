@@ -96,15 +96,15 @@ export default function Resume({ resume, customization }: ResumeProps) {
 
               {education.filter(entry => entry.visible).map(entry => (
                 <div key={entry.id} className="resume__education-entry">
-                  <div className="resume__education-info-group">
+                  <div className="resume__education-info-group-1">
                     <p className="resume__education-dates">
                       {entry.startDate} – {entry.endDate}
                     </p>
 
-                    <p>{entry.location}</p>
+                    <p className="">{entry.location}</p>
                   </div>
 
-                  <div className="resume__education-info-group">
+                  <div className="resume__education-info-group-2">
                     <p className="resume__school">{entry.school}</p>
                     <p>{entry.degree}</p>
                   </div>
