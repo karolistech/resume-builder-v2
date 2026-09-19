@@ -154,17 +154,26 @@
   font-size: 0.9rem;
 }
 
+.experience__btn--delete {
+  color: #b00;
+}
+
 .experience__btn--cancel {
   margin-left: auto;
 }
 
 .experience__btn--submit {
+  border-color: var(--color-title-background);
   background-color: var(--color-title-background);
   color: var(--color-title-text);
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .experience__add-button:hover {
+    filter: brightness(95%);
+  }
+
   .experience__btn:hover {
-    filter: brightness(90%);
+    filter: brightness(95%);
   }
 }

@@ -127,7 +127,7 @@ export default function Education({ education, updateResume }: EducationProps) {
       )}
 
       {sectionOpen && editor.mode !== null && entry !== undefined && (
-        <form className="education__form" onSubmit={closeEditor}>
+        <form className="education__form" onSubmit={e => { e.preventDefault(); closeEditor(); }}>
           <div className="education__fields">
             <div className="education__field">
               <label htmlFor="education-school" className="education__label">
@@ -189,7 +189,7 @@ export default function Education({ education, updateResume }: EducationProps) {
 
           <div className="education__actions">
             {editor.mode === "edit" && (
-              <button type="button" className="education__btn education__btn--edit" onClick={deleteEntry}>
+              <button type="button" className="education__btn education__btn--delete" onClick={deleteEntry}>
                 Delete
               </button>
             )}

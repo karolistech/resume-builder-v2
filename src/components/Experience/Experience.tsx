@@ -200,7 +200,7 @@ export default function Experience({ experience, updateResume }: ExperienceProps
             {editor.mode === "edit" && (
               <button
                 type="button"
-                className="experience__btn experience__btn--edit"
+                className="experience__btn experience__btn--delete"
                 onClick={() => deleteEntry(editor.entryId)}
               >
                 Delete

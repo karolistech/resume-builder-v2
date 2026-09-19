@@ -142,6 +142,10 @@
   font-size: 0.9rem;
 }
 
+.education__btn--delete {
+  color: #b00;
+}
+
 .education__btn--cancel {
   margin-left: auto;
 }
@@ -152,7 +156,11 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .education__add-button:hover {
+    filter: brightness(95%);
+  }
+
   .education__btn:hover {
-    filter: brightness(90%);
+    filter: brightness(95%);
   }
 }
