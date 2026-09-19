@@ -45,13 +45,24 @@ export const exampleResume: Resume = {
   experience: [
     {
       id: crypto.randomUUID(),
-      company: "Tech Corp",
+      company: "Tech Innovations",
       position: "Frontend Developer",
-      startDate: "2022-06",
-      endDate: "2024-08",
+      startDate: "2020-06",
+      endDate: "2022-08",
       location: "Remote",
-      description: "Built and maintained React-based user interfaces.",
+      description: "Developed and maintained user interfaces using React and TypeScript.",
       visible: true
-    }
+    },
+
+    {
+      id: crypto.randomUUID(),
+      company: "Tessera Labs",
+      position: "Backend Developer",
+      startDate: "2022-09",
+      endDate: "2024-12",
+      location: "Silicon Valley, CA",
+      description: "Designed and implemented server-side features using modern backend technologies.",
+      visible: true
+    },
   ]
 };

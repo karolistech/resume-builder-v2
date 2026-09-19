@@ -40,7 +40,7 @@ export default function Resume({ resume, customization }: ResumeProps) {
     return () => observer.disconnect();
   }, []);
 
-  const { personal, education } = resume;
+  const { personal, education, experience } = resume;
 
   return (
     <div ref={containerRef} className={`resume resume--${layout} resume--font-${font}`}>
@@ -107,6 +107,38 @@ export default function Resume({ resume, customization }: ResumeProps) {
                   <div className="resume__education-info-group-2">
                     <p className="resume__school">{entry.school}</p>
                     <p>{entry.degree}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {experience.some(entry => entry.visible) && (
+            <div className="resume__experience">
+              <h2 className="resume__experience-title">Professional Experience</h2>
+
+              {experience.filter(entry => entry.visible).map(entry => (
+                <div key={entry.id} className="resume__experience-entry">
+                  <div className="resume__experience-info-group-1">
+                    <p className="resume__experience-dates">
+                      {entry.startDate} – {entry.endDate}
+                    </p>
+
+                    <p className="">{entry.location}</p>
+                  </div>
+
+                  <div className="resume__experience-info-group-2">
+                    <p className="resume__experience-company">
+                      {entry.company}
+                    </p>
+
+                    <p className="resume__experience-position">
+                      {entry.position}
+                    </p>
+
+                    <p className="resume__experience-description">
+                      {entry.description}
+                    </p>
                   </div>
                 </div>
               ))}

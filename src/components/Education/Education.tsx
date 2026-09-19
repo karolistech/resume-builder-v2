@@ -18,12 +18,11 @@ export default function Education({ education, updateResume }: EducationProps) {
   const [sectionOpen, setSectionOpen] = useState(false);
   const [editor, setEditor] = useState<Editor>({ mode: null, activeId: null, snapshot: null });
 
-  const activeEntry = education.find(entry => entry.id === editor.activeId);
+  const entry = education.find(entry => entry.id === editor.activeId);
 
   useEffect(() => {
-    if (editor.mode === null) return;
-    if (activeEntry === undefined) closeEditor();
-  }, [education]);
+    if (editor.mode !== null && entry === undefined) closeEditor();
+  }, [editor.mode, entry]);
 
   function toggleSection() {
     setSectionOpen(open => !open);
@@ -127,7 +126,7 @@ export default function Education({ education, updateResume }: EducationProps) {
         </>
       )}
 
-      {sectionOpen && editor.mode !== null && activeEntry !== undefined && (
+      {sectionOpen && editor.mode !== null && entry !== undefined && (
         <form className="education__form" onSubmit={closeEditor}>
           <div className="education__fields">
             <div className="education__field">
@@ -137,7 +136,7 @@ export default function Education({ education, updateResume }: EducationProps) {
 
               <input
                 type="text" id="education-school" name="school" className="education__input"
-                value={activeEntry.school} onChange={handleInput}
+                value={entry.school} onChange={handleInput}
               />
             </div>
 
@@ -148,7 +147,7 @@ export default function Education({ education, updateResume }: EducationProps) {
 
               <input
                 type="text" id="education-degree" name="degree" className="education__input"
-                value={activeEntry.degree} onChange={handleInput}
+                value={entry.degree} onChange={handleInput}
               />
             </div>
 
@@ -160,7 +159,7 @@ export default function Education({ education, updateResume }: EducationProps) {
 
                 <input
                   type="text" id="education-start-date" name="startDate" className="education__input"
-                  value={activeEntry.startDate} onChange={handleInput}
+                  value={entry.startDate} onChange={handleInput}
                 />
               </div>
 
@@ -171,7 +170,7 @@ export default function Education({ education, updateResume }: EducationProps) {
 
                 <input
                   type="text" id="education-end-date" name="endDate" className="education__input"
-                  value={activeEntry.endDate} onChange={handleInput}
+                  value={entry.endDate} onChange={handleInput}
                 />
               </div>
             </div>
@@ -183,7 +182,7 @@ export default function Education({ education, updateResume }: EducationProps) {
 
               <input
                 type="text" id="education-location" name="location" className="education__input"
-                value={activeEntry.location} onChange={handleInput}
+                value={entry.location} onChange={handleInput}
               />
             </div>
           </div>
@@ -215,4 +214,3 @@ function getChevronClassName(sectionOpen: boolean): string {
 
   return [base, open].filter(Boolean).join(" ");
 }
-

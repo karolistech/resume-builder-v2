@@ -91,6 +91,9 @@
 
 .resume__main {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
   padding: 2rem;
 }
 
@@ -102,14 +105,16 @@
   padding: 1.5rem 1rem;
 }
 
-.resume__education {
+.resume__education,
+.resume__experience {
   min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.resume__education-title {
+.resume__education-title,
+.resume__experience-title {
   padding-block: 0.25rem;
   background-color: var(--color-heading-background);
   color: var(--color-heading-text);
@@ -119,20 +124,23 @@
   text-transform: uppercase;
 }
 
-.resume__education-entry {
+.resume__education-entry,
+.resume__experience-entry {
   display: flex;
   gap: 1rem;
 }
 
-.resume__education-info-group-1 {
-  width: 200px;
+.resume__education-info-group-1,
+.resume__experience-info-group-1 {
+  width: 175px;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   flex-shrink: 0;
 }
 
-.resume__education-info-group-2 {
+.resume__education-info-group-2,
+.resume__experience-info-group-2 {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -140,6 +148,19 @@
 
 .resume__school {
   font-weight: 700;
+}
+
+.resume__experience-company {
+  font-weight: 700;
+}
+
+.resume__experience-position {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.resume__experience-description {
+  white-space: pre-wrap;
 }
 
 @media print {

@@ -6,6 +6,7 @@ import Nav from "./components/Nav/Nav";
 import Toolbar from "./components/Toolbar/Toolbar";
 import Personal from "./components/Personal/Personal";
 import Education from "./components/Education/Education";
+import Experience from "./components/Experience/Experience";
 import Customize from "./components/Customize/Customize";
 import Resume from "./components/Resume/Resume";
 
@@ -24,6 +25,7 @@ export default function App() {
         <Toolbar clearResume={clearResume} loadExample={loadExample} />
         <Personal personal={resume.personal} updateResume={updateResume} />
         <Education education={resume.education} updateResume={updateResume} />
+        <Experience experience={resume.experience} updateResume={updateResume} />
       </div>
 
       <div className="panel panel--customize">

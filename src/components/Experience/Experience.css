@@ -1,0 +1,170 @@
+.experience {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: var(--color-shadow);
+}
+
+.experience__briefcase-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.experience__toggle-button {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  background: none;
+}
+
+.experience__toggle-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.experience__title {
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.experience__chevron-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.experience__chevron-icon--open {
+  transform: rotate(180deg);
+}
+
+.experience__entries {
+  list-style-type: none;
+}
+
+.experience__entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-top: 5px solid #f4f4f4;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.experience__entry:last-of-type {
+  border-bottom: 5px solid #f4f4f4;
+}
+
+.experience__company {
+  font-weight: 600;
+}
+
+.experience__visibility-button {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+}
+
+.experience__visibility-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.experience__add-button {
+  align-self: center;
+  margin-block: 1rem;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: 4px solid #eee;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.experience__form {
+  padding: 0 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.experience__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.experience__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.experience__field-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.experience__field-group .experience__field {
+  flex: 1;
+}
+
+.experience__label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.experience__input {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #f4f4f4;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.experience__textarea {
+  padding: 0.5rem;
+  min-height: 100px;
+  resize: vertical;
+  background-color: #f4f4f4;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  scrollbar-width: thin;
+}
+
+.experience__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.experience__btn {
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.experience__btn--cancel {
+  margin-left: auto;
+}
+
+.experience__btn--submit {
+  background-color: var(--color-title-background);
+  color: var(--color-title-text);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .experience__btn:hover {
+    filter: brightness(90%);
+  }
+}
