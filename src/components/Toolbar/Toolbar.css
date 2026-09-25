@@ -31,10 +31,10 @@
 
 @media (hover: hover) and (pointer: fine) {
   .toolbar__btn:hover {
-    filter: brightness(90%);
+    filter: brightness(95%);
   }
 
   .toolbar__btn:active {
-    filter: brightness(85%);
+    filter: brightness(90%);
   }
 }

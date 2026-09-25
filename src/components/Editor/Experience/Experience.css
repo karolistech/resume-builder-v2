@@ -1,30 +1,28 @@
 .experience {
-  display: flex;
-  flex-direction: column;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   box-shadow: var(--color-shadow);
 }
 
-.experience__briefcase-icon {
-  width: 24px;
-  height: 24px;
-}
-
-.experience__toggle-button {
+.experience__section-button {
   width: 100%;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: none;
   background: none;
+  border: none;
 }
 
-.experience__toggle-left {
+.experience__title-group {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.experience__icon {
+  width: 24px;
+  height: 24px;
 }
 
 .experience__title {
@@ -47,28 +45,36 @@
 }
 
 .experience__entry {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding: 1rem;
-  border-top: 5px solid #f4f4f4;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  border-top: 5px solid var(--color-background);
 }
 
-.experience__entry:last-of-type {
-  border-bottom: 5px solid #f4f4f4;
+.experience__entry:last-child {
+  border-bottom: 5px solid var(--color-background);
+}
+
+.experience__edit-button {
+  background: none;
+  border: none;
+  text-align: left;
+}
+
+.experience__toggle-button {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
 }
 
 .experience__company {
+  font-size: 1rem;
   font-weight: 600;
-}
-
-.experience__visibility-button {
-  width: 24px;
-  height: 24px;
-  border: none;
-  background: none;
+  overflow-wrap: anywhere;
 }
 
 .experience__visibility-icon {
@@ -76,12 +82,12 @@
   height: 100%;
 }
 
-.experience__add-button {
-  align-self: center;
-  margin-block: 1rem;
+.experience__create-button {
+  display: block;
+  margin: 1rem auto;
   padding: 0.5rem 1rem;
   background: none;
-  border: 4px solid #eee;
+  border: 5px solid var(--color-background);
   border-radius: 25px;
   font-size: 1rem;
   font-weight: 600;
@@ -107,12 +113,9 @@
 }
 
 .experience__field-group {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.5rem;
-}
-
-.experience__field-group .experience__field {
-  flex: 1;
 }
 
 .experience__label {
@@ -121,11 +124,10 @@
 }
 
 .experience__input {
-  width: 100%;
   padding: 0.5rem;
-  background-color: #f4f4f4;
+  background-color: var(--color-background);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   font-size: 1rem;
 }
 
@@ -133,12 +135,12 @@
   padding: 0.5rem;
   min-height: 100px;
   resize: vertical;
-  background-color: #f4f4f4;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-family: inherit;
   scrollbar-width: thin;
+  background-color: var(--color-background);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 1rem;
 }
 
 .experience__actions {
@@ -146,33 +148,33 @@
   gap: 0.5rem;
 }
 
-.experience__btn {
+.experience__action-button {
   padding: 0.5rem 1rem;
   background-color: #fff;
-  border: 1px solid #aaa;
-  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   font-size: 0.9rem;
 }
 
-.experience__btn--delete {
-  color: #b00;
+.experience__action-button--delete {
+  color: var(--color-red);
 }
 
-.experience__btn--cancel {
+.experience__action-button--cancel {
   margin-left: auto;
 }
 
-.experience__btn--submit {
+.experience__action-button--submit {
   background-color: var(--color-title-background);
   color: var(--color-title-text);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .experience__add-button:hover {
+  .experience__create-button:hover {
     filter: brightness(95%);
   }
 
-  .experience__btn:hover {
+  .experience__action-button:hover {
     filter: brightness(95%);
   }
 }

@@ -1,1 +1,1 @@
-export type View = "content" | "customize" | "preview";
+export type View = "editor" | "design" | "resume";

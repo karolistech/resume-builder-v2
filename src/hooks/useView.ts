@@ -3,20 +3,20 @@ import { useEffect, useState } from "react";
 import type { View } from "@/types/view";
 
 export function useView() {
-  const [view, setView] = useState<View>("content");
+  const [view, setView] = useState<View>("editor");
 
   useEffect(() => {
     const mql = window.matchMedia("(min-width: 768px)");
 
-    function syncView(e: MediaQueryListEvent) {
+    const handleChange = (e: MediaQueryListEvent) => {
       if (e.matches) {
-        setView(view => view === "preview" ? "content" : view);
+        setView(view => view === "resume" ? "editor" : view);
       }
-    }
+    };
 
-    mql.addEventListener("change", syncView);
+    mql.addEventListener("change", handleChange);
 
-    return () => mql.removeEventListener("change", syncView);
+    return () => mql.removeEventListener("change", handleChange);
   }, []);
 
   return { view, setView };

@@ -17,27 +17,27 @@ export const exampleResume: Resume = {
     name: "John Doe",
     email: "john.doe@email.com",
     phone: "555-123-4567",
-    location: "New York, NY"
+    location: "Silicon Valley, CA"
   },
 
   education: [
     {
       id: crypto.randomUUID(),
-      school: "State University",
-      degree: "B.S. Computer Science",
+      school: "New York University",
+      degree: "B.S. in Computer Science",
       startDate: "2018-09",
-      endDate: "2022-05",
+      endDate: "2022-06",
       location: "New York, NY",
       visible: true
     },
 
     {
       id: crypto.randomUUID(),
-      school: "MIT",
-      degree: "B.S. Computer Science",
-      startDate: "2018-09",
-      endDate: "2022-05",
-      location: "New York, NY",
+      school: "Harvard University",
+      degree: "M.S. in Artificial Intelligence",
+      startDate: "2022-09",
+      endDate: "2024-06",
+      location: "Cambridge, MA",
       visible: true
     }
   ],
@@ -48,20 +48,20 @@ export const exampleResume: Resume = {
       company: "Tech Innovations",
       position: "Frontend Developer",
       startDate: "2020-06",
-      endDate: "2022-08",
+      endDate: "2024-06",
       location: "Remote",
-      description: "Developed and maintained user interfaces using React and TypeScript.",
+      description: "Developed responsive web interfaces using modern frontend technologies.",
       visible: true
     },
 
     {
       id: crypto.randomUUID(),
       company: "Tessera Labs",
-      position: "Backend Developer",
-      startDate: "2022-09",
-      endDate: "2024-12",
+      position: "Software Engineer",
+      startDate: "2024-07",
+      endDate: "Present",
       location: "Silicon Valley, CA",
-      description: "Designed and implemented server-side features using modern backend technologies.",
+      description: "Designed and implemented software solutions based on business and technical requirements.",
       visible: true
     },
   ]

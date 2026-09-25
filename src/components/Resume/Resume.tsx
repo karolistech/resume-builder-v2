@@ -1,110 +1,100 @@
 import { useEffect, useRef } from "react";
 
 import type { Resume } from "@/types/resume";
-import type { Customization } from "@/types/customization";
+import type { Design } from "@/types/design";
 
 import "./Resume.css";
 import icons from "@/assets/icons/icons.svg";
 
 type ResumeProps = {
   resume: Resume;
-  customization: Customization;
+  design: Design;
 };
 
-export default function Resume({ resume, customization }: ResumeProps) {
+export default function Resume({ resume, design }: ResumeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const resumeRef = useRef<HTMLDivElement>(null);
 
-  const { layout, font } = customization;
+  const { personal, education, experience } = resume;
+  const { layout, font } = design;
 
   useEffect(() => {
     const container = containerRef.current;
     const resume = resumeRef.current;
 
-    if (!container || !resume) return;
+    if (container === null || resume === null) return;
 
     const updateScale = () => {
       const availableWidth = container.clientWidth;
       const resumeWidth = resume.offsetWidth;
       const resumeHeight = resume.offsetHeight;
 
-      const scale = Math.min(1, availableWidth / resumeWidth);
+      const scale = availableWidth / resumeWidth;
 
       container.style.height = `${resumeHeight * scale}px`;
       resume.style.transform = `scale(${scale})`;
     };
 
     const observer = new ResizeObserver(updateScale);
+
     observer.observe(container);
 
     return () => observer.disconnect();
   }, []);
 
-  const { personal, education, experience } = resume;
-
   return (
     <div ref={containerRef} className={`resume resume--${layout} resume--font-${font}`}>
       <div ref={resumeRef} className="resume__content">
 
-        <div className="resume__personal">
+        <div className="resume__header">
           <h1 className="resume__name">{personal.name}</h1>
 
-          <div className="resume__contact">
+          <div className="resume__contacts">
             {personal.email && (
-              <div className="resume__contact-group">
+              <div className="resume__contact">
                 <svg className="resume__icon">
                   <use href={`${icons}#envelope`} />
                 </svg>
 
-                <span className="resume__email">
-                  {personal.email}
-                </span>
+                <p>{personal.email}</p>
               </div>
             )}
 
             {personal.phone && (
-              <div className="resume__contact-group">
-
+              <div className="resume__contact">
                 <svg className="resume__icon">
                   <use href={`${icons}#phone`} />
                 </svg>
 
-                <span className="resume__phone">
-                  {personal.phone}
-                </span>
+                <p>{personal.phone}</p>
               </div>
             )}
 
             {personal.location && (
-              <div className="resume__contact-group">
+              <div className="resume__contact">
                 <svg className="resume__icon">
                   <use href={`${icons}#location`} />
                 </svg>
 
-                <span className="resume__location">
-                  {personal.location}
-                </span>
+                <p>{personal.location}</p>
               </div>
             )}
           </div>
         </div>
 
-        <div className="resume__main">
+        <div className="resume__body">
           {education.some(entry => entry.visible) && (
-            <div className="resume__education">
-              <h2 className="resume__education-title">Education</h2>
+            <div className="resume__section">
+              <h2 className="resume__section-title">Education</h2>
 
               {education.filter(entry => entry.visible).map(entry => (
-                <div key={entry.id} className="resume__education-entry">
-                  <div className="resume__education-info-group-1">
-                    <p className="resume__education-dates">
-                      {entry.startDate} – {entry.endDate}
-                    </p>
-
-                    <p className="">{entry.location}</p>
+                <div key={entry.id} className="resume__entry">
+                  <div className="resume__entry-aside">
+                    <p>{entry.startDate} – {entry.endDate}</p>
+                    <p>{entry.location}</p>
                   </div>
 
-                  <div className="resume__education-info-group-2">
+                  <div className="resume__entry-body">
                     <p className="resume__school">{entry.school}</p>
                     <p>{entry.degree}</p>
                   </div>
@@ -114,31 +104,20 @@ export default function Resume({ resume, customization }: ResumeProps) {
           )}
 
           {experience.some(entry => entry.visible) && (
-            <div className="resume__experience">
-              <h2 className="resume__experience-title">Professional Experience</h2>
+            <div className="resume__section">
+              <h2 className="resume__section-title">Professional Experience</h2>
 
               {experience.filter(entry => entry.visible).map(entry => (
-                <div key={entry.id} className="resume__experience-entry">
-                  <div className="resume__experience-info-group-1">
-                    <p className="resume__experience-dates">
-                      {entry.startDate} – {entry.endDate}
-                    </p>
-
-                    <p className="">{entry.location}</p>
+                <div key={entry.id} className="resume__entry">
+                  <div className="resume__entry-aside">
+                    <p>{entry.startDate} – {entry.endDate}</p>
+                    <p>{entry.location}</p>
                   </div>
 
-                  <div className="resume__experience-info-group-2">
-                    <p className="resume__experience-company">
-                      {entry.company}
-                    </p>
-
-                    <p className="resume__experience-position">
-                      {entry.position}
-                    </p>
-
-                    <p className="resume__experience-description">
-                      {entry.description}
-                    </p>
+                  <div className="resume__entry-body">
+                    <p className="resume__company">{entry.company}</p>
+                    <p className="resume__position">{entry.position}</p>
+                    <p className="resume__description">{entry.description}</p>
                   </div>
                 </div>
               ))}

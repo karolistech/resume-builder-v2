@@ -15,9 +15,9 @@ export function useResume() {
     setResume(emptyResume);
   }
 
-  function loadExample() {
+  function loadResume() {
     setResume(exampleResume);
   }
 
-  return { resume, updateResume, clearResume, loadExample };
+  return { resume, updateResume, clearResume, loadResume };
 }

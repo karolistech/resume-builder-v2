@@ -1,0 +1,67 @@
+.personal {
+  background-color: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--color-shadow);
+}
+
+.personal__toggle-button {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+}
+
+.personal__title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.personal__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.personal__title {
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.personal__chevron-icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+}
+
+.personal__chevron-icon--open {
+  transform: rotate(180deg);
+}
+
+.personal__form {
+  padding: 0 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.personal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.personal__label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.personal__input {
+  padding: 0.5rem;
+  background-color: var(--color-background);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+}
