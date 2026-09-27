@@ -183,4 +183,12 @@
   .resume__content {
     transform: none !important;
   }
+
+  .resume__header {
+    print-color-adjust: exact;
+  }
+
+  .resume__section-title {
+    print-color-adjust: exact;
+  }
 }
