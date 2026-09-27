@@ -47,9 +47,8 @@
 .education__entry {
   padding: 1rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   border-top: 5px solid var(--color-background);
 }
 
@@ -58,13 +57,14 @@
 }
 
 .education__edit-button {
+  flex: 1;
+  align-self: stretch;
   background: none;
   border: none;
   text-align: left;
 }
 
 .education__toggle-button {
-  flex-shrink: 0;
   width: 24px;
   height: 24px;
   background: none;
